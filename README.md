@@ -479,7 +479,6 @@ See [SAMPLE_SCENARIOS.md](./SAMPLE_SCENARIOS.md) for detailed test cases with ex
 ## Contact & Support
 
 For issues or questions, refer to:
-- **API Docs**: Swagger UI at `/docs`
 - **Architecture**: [ARCHITECTURE.md](./ARCHITECTURE.md)
 - **Design Decisions**: [ADR.md](./ADR.md)
 - **Scaling**: [SCALING.md](./SCALING.md)
