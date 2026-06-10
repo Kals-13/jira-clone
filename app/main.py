@@ -52,8 +52,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="JiraLite", version="1.0.0", lifespan=lifespan)
 
-# ── Middleware (order matters — CorrelationMiddleware must be outermost) ───────
-
+# Middleware
 app.add_middleware(CorrelationMiddleware)
 app.add_middleware(RateLimitMiddleware)
 app.add_middleware(IdempotencyMiddleware)
@@ -65,8 +64,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Exception handlers ────────────────────────────────────────────────────────
-
+# Exception handlers
 @app.exception_handler(JiraLiteError)
 async def domain_error_handler(request: Request, exc: JiraLiteError):
     """
@@ -101,7 +99,7 @@ async def unhandled_error_handler(request: Request, exc: Exception):
         headers={"X-Correlation-ID": cid},
     )
 
-# ── Routes ────────────────────────────────────────────────────────────────────
+# Routes
 
 app.include_router(auth.router,      prefix="/api/v1/auth",     tags=["auth"])
 app.include_router(projects.router,  prefix="/api/v1/projects", tags=["projects"])
